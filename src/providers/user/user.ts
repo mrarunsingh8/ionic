@@ -1,4 +1,4 @@
-import { Http, Headers } from '@angular/http';
+import {Http, Headers, RequestOptions, RequestMethod} from '@angular/http';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiServiceProvider } from '../api-service/api-service';
@@ -13,26 +13,23 @@ import { catchError } from 'rxjs/operators';
 */
 @Injectable()
 export class UserProvider {
-	url: string = 'http://localhost:3000/api/user';
+	url: string = 'http://localhost:3000/api/user';//'https://jsonplaceholder.typicode.com/posts/1';//http://localhost:3000/api/user
   constructor(public http: Http, private httpClient: HttpClient, private apiService: ApiServiceProvider) {
     console.log('Hello UserProvider Provider');
   }
 
-  
 
-  getUsers(){    
+
+  getUsers(){
     let myHeaders = new Headers();
-    myHeaders.append('Accept', 'application/json');    
-    //myHeaders.append('Authorization', 'Basic YWRtaW46YWRtaW4=');    
-  	return this.http.get(this.url, {headers: myHeaders}).map(res => res.json())
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  private handleError(err: HttpErrorResponse | any) {
-    console.error('An error occurred', err);
-    return Observable.throw(err.message || err);
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    let options = new RequestOptions({
+      method: RequestMethod.Get,
+      url:this.url,
+      headers: myHeaders
+    });
+  	return this.http.get(this.url, options).map(res => res.json());
   }
 
 }
