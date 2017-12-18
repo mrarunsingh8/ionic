@@ -17,15 +17,8 @@ export class ApiServiceProvider {
 	console.log('Hello ApiServiceProvider Provider');
 	}
 
-	createAuthorizationHeader() {
-		/*let headers = new Headers();
-		headers.append('Authorization', 'Basic ' + btoa(this.username+':'+this.password));
-		return headers;*/
-		let header ={
-			'Authorization' : 'Basic ' + btoa(this.username+':'+this.password),
-			'token':'abcdef'
-		};
-		return new Headers(header);
+	getAuthHeader() {
+		return 'Basic ' + btoa(this.username+':'+this.password);
 	}
 
 }

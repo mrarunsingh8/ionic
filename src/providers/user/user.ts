@@ -1,10 +1,7 @@
-import { Http, Headers } from '@angular/http';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiServiceProvider } from '../api-service/api-service';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
-import { catchError } from 'rxjs/operators';
 /*
   Generated class for the UserProvider provider.
 
@@ -13,26 +10,34 @@ import { catchError } from 'rxjs/operators';
 */
 @Injectable()
 export class UserProvider {
-	url: string = 'http://localhost:3000/api/user';
-  constructor(public http: Http, private httpClient: HttpClient, private apiService: ApiServiceProvider) {
+	url: string = 'http://127.0.0.1:3000/api/user';
+  token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzNTk3MDQzLCJleHAiOjE1MTM2ODM0NDN9.MFAOEn6ght7uI_mNNHJgdjkhcNjGhQ8oHE6eGnL_N3M';
+  constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
     console.log('Hello UserProvider Provider');
   }
 
-  
+  getUsers(){
+    let myHeaders = new HttpHeaders();
+    myHeaders = myHeaders.set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type','application/json; charset=UTF-8')
+      .set('Authorization',this.apiService.getAuthHeader())
+      .set('token',this.token);
 
-  getUsers(){    
-    let myHeaders = new Headers();
-    myHeaders.append('Accept', 'application/json');    
-    //myHeaders.append('Authorization', 'Basic YWRtaW46YWRtaW4=');    
-  	return this.http.get(this.url, {headers: myHeaders}).map(res => res.json())
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.get(this.url, {headers: myHeaders}).map(res => {
+      return res;
+    });
   }
 
-  private handleError(err: HttpErrorResponse | any) {
-    console.error('An error occurred', err);
-    return Observable.throw(err.message || err);
+  getUser(userId){
+    let myHeaders = new HttpHeaders();
+    myHeaders = myHeaders.set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type','application/json; charset=UTF-8')
+      .set('Authorization',this.apiService.getAuthHeader())
+      .set('token',this.token);
+
+    return this.http.get(this.url+"/"+userId, {headers: myHeaders}).map(res => {
+      return res;
+    });
   }
 
 }

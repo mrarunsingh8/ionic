@@ -17,5 +17,13 @@
 
 
 <ion-content padding>
-
+	<ion-list>
+		<button ion-item *ngFor="let bookItem of books">
+		  <ion-icon name="person" item-start></ion-icon>
+		  {{bookItem.bookname}}
+		  <div class="item-note" item-end>
+		    {{bookItem.authorname}}
+		  </div>
+		</button>
+	</ion-list>
 </ion-content>

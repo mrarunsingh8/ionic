@@ -17,6 +17,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserProvider } from '../providers/user/user';
 import { ConfigProvider } from '../providers/config/config';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
+import { BookProvider } from '../providers/book/book';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     UserProvider,
     ConfigProvider,
     ApiServiceProvider,
+    BookProvider,
   ]
 })
 export class AppModule {}
