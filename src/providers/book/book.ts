@@ -53,7 +53,6 @@ export class BookProvider {
 		});
 
 	}
-
 	getBook(bookId): Observable<any>{
 		let myHeader = new HttpHeaders();
 		myHeader = myHeader.set('Access-Control-Allow-Origin', '*')

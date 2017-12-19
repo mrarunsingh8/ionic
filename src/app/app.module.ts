@@ -11,6 +11,7 @@ import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
 import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
+import { BookDetailPage } from '../pages/book/book-detail';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,7 +28,8 @@ import { BookProvider } from '../providers/book/book';
     ListPage,
     UserPage,
     UserDetailPage,
-    BookPage
+    BookPage,
+    BookDetailPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { BookProvider } from '../providers/book/book';
     ListPage,
     UserPage,
     UserDetailPage,
-    BookPage
+    BookPage,
+    BookDetailPage
   ],
   providers: [
     StatusBar,

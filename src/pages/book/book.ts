@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { BookProvider, bookDataInterface } from '../../providers/book/book';
-
+import { BookDetailPage } from './book-detail';
 /**
  * Generated class for the BookPage page.
  *
@@ -26,8 +26,10 @@ export class BookPage {
     });
   }
 
-  openBookDetail(bookId){
-  	console.log(bookId);
+  openBookDetail(bookId: number){
+  	this.navCtrl.push(BookDetailPage, {
+  		bookId: bookId,
+  	});
   }
 
 }
