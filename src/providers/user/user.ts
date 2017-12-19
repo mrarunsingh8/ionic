@@ -35,7 +35,7 @@ export interface userDataInterFace{
 @Injectable()
 export class UserProvider {
 	url: string = 'http://127.0.0.1:3000/api/user';
-  token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzNTk3MDQzLCJleHAiOjE1MTM2ODM0NDN9.MFAOEn6ght7uI_mNNHJgdjkhcNjGhQ8oHE6eGnL_N3M';
+  token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzNjg0NTY2LCJleHAiOjE1MTM3NzA5NjZ9.guHvkvKpcAfKNlE6CdFgNyfePBPhFYj4ITeo4vrKBlA';
   constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
     console.log('Hello UserProvider Provider');
   }

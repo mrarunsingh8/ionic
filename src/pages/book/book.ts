@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { BookProvider } from '../../providers/book/book';
+import { BookProvider, bookDataInterface } from '../../providers/book/book';
 
 /**
  * Generated class for the BookPage page.
@@ -14,18 +14,20 @@ import { BookProvider } from '../../providers/book/book';
   templateUrl: 'book.html',
 })
 export class BookPage {
-	books: any;
-	rows: number = 0;
+	public books: bookDataInterface;
+	public isLoadedData: boolean = false;
 	constructor(public navCtrl: NavController, public navParams: NavParams, private bookService: BookProvider) {
 	}
 
   ionViewDidLoad() {
-    /*this.bookService.getAllBooks().subscribe(res => {
-    	if(res.status == 200 && res.error === null){
-			this.books = res.response;
-			this.rows = res.rows;
-		}
-    });*/
+    this.bookService.getAllBooks().subscribe(res => {
+    	this.isLoadedData = true;
+    	this.books = res;
+    });
+  }
+
+  openBookDetail(bookId){
+  	console.log(bookId);
   }
 
 }

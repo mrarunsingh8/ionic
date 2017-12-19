@@ -17,8 +17,8 @@
 
 
 <ion-content padding>
-	<ion-list>
-		<button ion-item *ngFor="let bookItem of books">
+	<ion-list *ngIf="isLoadedData">
+		<button ion-item *ngFor="let bookItem of books.response" (click)="openBookDetail(bookItem.id)">
 		  <ion-icon name="person" item-start></ion-icon>
 		  {{bookItem.bookname}}
 		  <div class="item-note" item-end>
