@@ -12,7 +12,7 @@ import { UserPage } from '../pages/user/user';
 import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
 import { BookDetailPage } from '../pages/book/book-detail';
-
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +29,8 @@ import { BookProvider } from '../providers/book/book';
     UserPage,
     UserDetailPage,
     BookPage,
-    BookDetailPage
+    BookDetailPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,8 @@ import { BookProvider } from '../providers/book/book';
     UserPage,
     UserDetailPage,
     BookPage,
-    BookDetailPage
+    BookDetailPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

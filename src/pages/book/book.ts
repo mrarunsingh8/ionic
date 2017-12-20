@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -23,6 +24,8 @@ export class BookPage {
     this.bookService.getAllBooks().subscribe(res => {
     	this.isLoadedData = true;
     	this.books = res;
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
     });
   }
 

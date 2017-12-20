@@ -8,7 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
 import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
-
+import { LoginPage } from '../pages/login/login';
 
 
 
@@ -31,7 +31,7 @@ export class MyApp {
       { title: 'User', component: UserPage, type: 'page'},
       { title: 'Books', component: BookPage, type: 'page'},
       { title: 'List', component: ListPage, type: 'component' },
-      { title: 'detail', component: UserDetailPage, type: 'page'}
+      { title: 'Login', component: LoginPage, type: 'page'}
     ];
 
   }
