@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiServiceProvider } from '../api-service/api-service';
 
@@ -39,8 +39,6 @@ export class UserProvider {
   constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
     console.log('Hello UserProvider Provider');
   }
-
- 
 
   getUsers(): Observable<any>{
     return this.http.get(this.url, this.apiService.getHeader()).map(res => {

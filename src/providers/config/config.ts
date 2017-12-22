@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ConfigProvider {
-	private configDataArr: any;
+	//private configDataArr: any;
 	private ConfigUrl: string = "./config.json";
 
 	constructor(public http: Http) {

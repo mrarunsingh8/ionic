@@ -12,7 +12,7 @@ export class ApiServiceProvider {
 
 	private username: string = "admin";
 	private password: string = "admin";
-	private token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzNjg0NTY2LCJleHAiOjE1MTM3NzA5NjZ9.guHvkvKpcAfKNlE6CdFgNyfePBPhFYj4ITeo4vrKBlA';
+	private token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzOTQzNDc0LCJleHAiOjE1MTQwMjk4NzR9.v-fZjv0AEOFypTBbHOkVSQmFJiinMHDTTUZHMGB0hXY';
 	private apiHeader = new HttpHeaders();
 	constructor() {
 		this.setDefaultHeader();

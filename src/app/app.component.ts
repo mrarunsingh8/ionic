@@ -6,10 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
-import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
-import { LoginPage } from '../pages/login/login';
-
+import { LoginComponent } from '../components/login/login';
 
 
 @Component({
@@ -31,7 +29,7 @@ export class MyApp {
       { title: 'User', component: UserPage, type: 'page'},
       { title: 'Books', component: BookPage, type: 'page'},
       { title: 'List', component: ListPage, type: 'component' },
-      { title: 'Login', component: LoginPage, type: 'page'}
+      { title: 'Login Component', component: LoginComponent, type: 'component'}
     ];
 
   }
