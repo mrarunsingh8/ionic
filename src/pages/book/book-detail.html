@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title item-center>
-      User Detail
+      Book Detail
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,19 +19,30 @@
           <ion-avatar item-start>
             <ion-icon name="person"></ion-icon>
           </ion-avatar>
-          <h2>{{userDetail.response.name}}</h2>
-          <p>{{userDetail.response.username}}</p>
+          <h2>{{bookDetail.response.bookname}}</h2>
         </ion-item>
         <ion-item>
-          Email: 
+          Author: 
           <ion-note>
-            {{userDetail.response.email}}
+            {{bookDetail.response.authorname}}
           </ion-note>
         </ion-item>
         <ion-item>
-          Contact: 
+          Version: 
           <ion-note>
-            {{userDetail.response.contact}}
+            {{bookDetail.response.version}}
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          Price: 
+          <ion-note>
+            {{bookDetail.response.price}}
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          Description: 
+          <ion-note>
+            {{bookDetail.response.description}}
           </ion-note>
         </ion-item>
 
