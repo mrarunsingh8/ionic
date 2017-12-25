@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HttpModule } from '@angular/http';
+import {IonicStorageModule} from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from '../components/login/login';
@@ -21,6 +21,8 @@ import { UserProvider } from '../providers/user/user';
 import { ConfigProvider } from '../providers/config/config';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { BookProvider } from '../providers/book/book';
+import { LoginProvider } from '../providers/login/login';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { BookProvider } from '../providers/book/book';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule,
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule
   ],
@@ -59,6 +61,7 @@ import { BookProvider } from '../providers/book/book';
     ConfigProvider,
     ApiServiceProvider,
     BookProvider,
+    LoginProvider,
   ]
 })
 export class AppModule {}
