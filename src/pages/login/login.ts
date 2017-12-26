@@ -1,41 +1,43 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {LoginProvider, LoginInterface, LoginResponceInterface} from "../../providers/login/login";
 import {Storage} from "@ionic/storage";
-import {AlertController, Nav, NavController} from "ionic-angular";
+import {IonicPage, AlertController, NavController} from "ionic-angular";
 import {HomePage} from "../../pages/home/home";
 
 /**
- * Generated class for the LoginComponent component.
+ * Generated class for the LoginPage page.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
+
 export interface AlertInterface{
   title: string;
   subTitle: string;
   buttons: Array<string>;
 }
+@IonicPage()
 @Component({
-  selector: 'login',
-  templateUrl: 'login.html'
+  selector: 'page-login',
+  templateUrl: 'login.html',
 })
-export class LoginComponent {
-  @ViewChild(Nav) nav: Nav;
-  public loginForm= null;
-  public loginData: LoginInterface = {
-    username: '',
-    password: ''
-  };
-  loginResponce: LoginResponceInterface;
-  formInterceptor: any;
+export class LoginPage {
+	public loginForm= null;
+	public loginData: LoginInterface = {
+		username: '',
+		password: ''
+	};
+	loginResponce: LoginResponceInterface;
+	formInterceptor: any;
 
-  constructor(private formBuilder: FormBuilder, private loginProvider: LoginProvider, private storage: Storage, private alertCtrl: AlertController) {
-    this.storage.get('isLogin').then(isLogin => {
-      if(isLogin === 'true'){
-        this.nav.setRoot(HomePage);
-      }
-    });
+	constructor(private nav: NavController, private formBuilder: FormBuilder, private loginProvider: LoginProvider, private storage: Storage, private alertCtrl: AlertController) {
+		var self = this;
+	    this.storage.get('isLogin').then(isLogin => {
+	      if(isLogin === 'true'){
+	        self.nav.setRoot(HomePage);
+	      }
+	    });
   }
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
@@ -65,6 +67,7 @@ export class LoginComponent {
     if(data.success === true){
       this.storage.set('token', data.token);
       this.storage.set('isLogin', 'true');
+      this.nav.setRoot(HomePage);
     }else{
       this.showAlert({
         title: 'Error!',

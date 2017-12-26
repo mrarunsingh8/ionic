@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
 import { BookPage } from '../pages/book/book';
-import { LoginComponent } from '../components/login/login';
+import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class MyApp {
       { title: 'User', component: UserPage, type: 'page'},
       { title: 'Books', component: BookPage, type: 'page'},
       { title: 'List', component: ListPage, type: 'component' },
-      { title: 'Login Component', component: LoginComponent, type: 'component'}
+      { title: 'Login Page', component: LoginPage, type: 'page'},
     ];
 
   }

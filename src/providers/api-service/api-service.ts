@@ -1,5 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the ApiServiceProvider provider.
@@ -12,9 +14,9 @@ export class ApiServiceProvider {
 
 	private username: string = "admin";
 	private password: string = "admin";
-	private token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pY29sIiwiaWF0IjoxNTEzOTQzNDc0LCJleHAiOjE1MTQwMjk4NzR9.v-fZjv0AEOFypTBbHOkVSQmFJiinMHDTTUZHMGB0hXY';
+	private token: string = '';
 	private apiHeader = new HttpHeaders();
-	constructor() {
+	constructor(private storage: Storage) {
 		this.setDefaultHeader();
 	}
 
@@ -29,7 +31,7 @@ export class ApiServiceProvider {
 	}
 
 	getHeader() {
-		return {headers: this.apiHeader};
+	  	return {headers: this.apiHeader};
 	}
 
 }

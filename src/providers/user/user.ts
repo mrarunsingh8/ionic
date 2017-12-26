@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiServiceProvider } from '../api-service/api-service';
 
@@ -35,13 +35,12 @@ export interface userDataInterFace{
 @Injectable()
 export class UserProvider {
 	url: string = 'http://127.0.0.1:3000/api/user';
-  
   constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
     console.log('Hello UserProvider Provider');
   }
 
   getUsers(): Observable<any>{
-    return this.http.get(this.url, this.apiService.getHeader()).map(res => {
+    return this.http.get(this.url, header).map(res => {
       return res;
     });
   }

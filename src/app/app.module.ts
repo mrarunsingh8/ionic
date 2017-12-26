@@ -5,7 +5,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import {IonicStorageModule} from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 
-import { LoginComponent } from '../components/login/login';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +13,8 @@ import { UserPage } from '../pages/user/user';
 import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
 import { BookDetailPage } from '../pages/book/book-detail';
+import { LoginPage } from '../pages/login/login';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +34,7 @@ import { LoginProvider } from '../providers/login/login';
     UserDetailPage,
     BookPage,
     BookDetailPage,
-    LoginComponent
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,7 @@ import { LoginProvider } from '../providers/login/login';
     UserDetailPage,
     BookPage,
     BookDetailPage,
-    LoginComponent
+    LoginPage,
   ],
   providers: [
     StatusBar,
