@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {HttpInterceptorProvider} from "../http-interceptor/http-interceptor";
 /*
  Generated class for the UserProvider provider.
   See https://angular.io/guide/dependency-injection for more info on providers
@@ -32,14 +33,16 @@ export interface userDataInterFace{
 }
 
 @Injectable()
-export class UserProvider {
+export class UserProvider{
 	url: string = 'http://127.0.0.1:3000/api/user';
-  constructor(public http: HttpClient) {
-    console.log('Hello UserProvider Provider');
+
+	constructor(public http: HttpClient) {
+
   }
 
-  getUsers(): Observable<any>{    
-    return this.http.get(this.url).map(res => {
+  getUsers(): Observable<any>{
+	  var header : HttpHeaders;
+    return this.http.get(this.url, {headers: header}).map(res => {
       return res;
     });
   }

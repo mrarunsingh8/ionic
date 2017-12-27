@@ -4,6 +4,7 @@ import {LoginProvider, LoginInterface, LoginResponceInterface} from "../../provi
 import {Storage} from "@ionic/storage";
 import {IonicPage, AlertController, NavController} from "ionic-angular";
 import {HomePage} from "../../pages/home/home";
+import {LocalStorageProvider} from "../../providers/http-interceptor/local-storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -31,10 +32,10 @@ export class LoginPage {
 	loginResponce: LoginResponceInterface;
 	formInterceptor: any;
 
-	constructor(private nav: NavController, private formBuilder: FormBuilder, private loginProvider: LoginProvider, private storage: Storage, private alertCtrl: AlertController) {
+	constructor(private nav: NavController, private formBuilder: FormBuilder, private loginProvider: LoginProvider, private storage: Storage, private alertCtrl: AlertController, private localStorageProvider: LocalStorageProvider) {
 		var self = this;
 	    this.storage.get('isLogin').then(isLogin => {
-	      if(isLogin === 'true'){
+	      if(this.localStorageProvider.getIsLogin()){
 	        self.nav.setRoot(HomePage);
 	      }
 	    });
@@ -65,8 +66,8 @@ export class LoginPage {
 
   manageLogin(data: LoginResponceInterface){
     if(data.success === true){
-      this.storage.set('token', data.token);
-      this.storage.set('isLogin', 'true');
+      this.localStorageProvider.setToken(data.token);
+      this.localStorageProvider.setIsLogin(true);
       this.nav.setRoot(HomePage);
     }else{
       this.showAlert({
@@ -81,5 +82,4 @@ export class LoginPage {
     let alert = this.alertCtrl.create(alertData);
     alert.present();
   }
-
 }

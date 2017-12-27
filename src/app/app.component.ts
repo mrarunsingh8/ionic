@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
 import { BookPage } from '../pages/book/book';
 import { LoginPage } from '../pages/login/login';
+import {LocalStorageProvider} from "../providers/http-interceptor/local-storage";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, type: String}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private localStorageProvider: LocalStorageProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -51,4 +52,10 @@ export class MyApp {
       default: this.nav.setRoot(page.component);break;
     }
   }
+
+  logOut(){
+    this.localStorageProvider.logOut();
+    this.nav.setRoot(HomePage);
+  }
+
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Storage} from "@ionic/storage";
 
 import { LoginPage } from "../login/login";
+import {LocalStorageProvider} from "../../providers/http-interceptor/local-storage";
 
 @Component({
   selector: 'page-home',
@@ -10,15 +10,13 @@ import { LoginPage } from "../login/login";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private storage: Storage) {
+  constructor(public navCtrl: NavController, private localStorageProvider: LocalStorageProvider) {
   	this.manageLogin();
   }
   manageLogin(){
-  	this.storage.get('isLogin').then((isLogin)=>{
-  		if(isLogin !== 'true'){
+  	if(!this.localStorageProvider.getIsLogin()){
   			this.navCtrl.push(LoginPage);
-  		}
-  	});
+  	}
   }
 
 }

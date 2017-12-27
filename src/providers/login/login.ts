@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {ApiServiceProvider} from "../api-service/api-service";
 
 /*
   Generated class for the LoginProvider provider.
@@ -25,17 +24,14 @@ export interface LoginResponceInterface{
 export class LoginProvider {
   url: string = 'http://127.0.0.1:3000/authenticate';
 
-  constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
+  constructor(public http: HttpClient) {
 
   }
 
   getAuth(data: LoginInterface): Observable<any>{
-
-    return this.http.post <LoginResponceInterface>(this.url, JSON.stringify(data), this.apiService.getHeader()).map(res => {
+    return this.http.post <LoginResponceInterface>(this.url, data, {}).map(res => {
       return res;
     });
   }
-
-
 
 }

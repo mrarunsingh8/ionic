@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiServiceProvider } from '../api-service/api-service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -36,19 +35,19 @@ export interface bookDataInterface{
 @Injectable()
 export class BookProvider {
 	url: string = 'http://127.0.0.1:3000/api/book';
-	
-	constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
+
+	constructor(public http: HttpClient) {
 		console.log('Hello BookProvider Provider');
 	}
 
 	getAllBooks(): Observable<any>{
-		return this.http.get<bookDataInterface>(this.url, this.apiService.getHeader()).map(res => {
+		return this.http.get<bookDataInterface>(this.url).map(res => {
 			return res;
 		});
 
 	}
 	getBook(bookId): Observable<any>{
-		return this.http.get<bookInterface>(this.url+'/'+bookId,  this.apiService.getHeader()).map(res => {
+		return this.http.get<bookInterface>(this.url+'/'+bookId).map(res => {
 			return res;
 		});
 	}

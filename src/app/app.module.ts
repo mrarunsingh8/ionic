@@ -24,6 +24,7 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { BookProvider } from '../providers/book/book';
 import { LoginProvider } from '../providers/login/login';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
+import {LocalStorageProvider} from "../providers/http-interceptor/local-storage";
 
 
 @NgModule({
@@ -65,7 +66,7 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     ApiServiceProvider,
     BookProvider,
     LoginProvider,
-    //HttpInterceptorProvider,
+    LocalStorageProvider,
   ]
 })
 export class AppModule {}
