@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import {IonicStorageModule} from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -23,6 +23,7 @@ import { ConfigProvider } from '../providers/config/config';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { BookProvider } from '../providers/book/book';
 import { LoginProvider } from '../providers/login/login';
+import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
 
 
 @NgModule({
@@ -57,12 +58,14 @@ import { LoginProvider } from '../providers/login/login';
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorProvider, multi: true},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     ConfigProvider,
     ApiServiceProvider,
     BookProvider,
     LoginProvider,
+    //HttpInterceptorProvider,
   ]
 })
 export class AppModule {}

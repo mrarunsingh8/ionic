@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiServiceProvider } from '../api-service/api-service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -35,18 +34,18 @@ export interface userDataInterFace{
 @Injectable()
 export class UserProvider {
 	url: string = 'http://127.0.0.1:3000/api/user';
-  constructor(public http: HttpClient, private apiService: ApiServiceProvider) {
+  constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
 
-  getUsers(): Observable<any>{
-    return this.http.get(this.url, header).map(res => {
+  getUsers(): Observable<any>{    
+    return this.http.get(this.url).map(res => {
       return res;
     });
   }
 
   getUser(userId): Observable<any>{
-    return this.http.get(this.url+"/"+userId, this.apiService.getHeader()).map(res => {
+    return this.http.get(this.url+"/"+userId).map(res => {
       return res;
     });
   }
