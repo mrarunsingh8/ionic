@@ -21,8 +21,8 @@ export class HttpInterceptorProvider implements HttpInterceptor{
 	intercept(req: HttpRequest<any>, hand: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({ headers: req.headers.set('Access-Control-Allow-Origin', '*')});
     req = req.clone({ headers: req.headers.set('Content-Type','application/json; charset=UTF-8')});
-		if(this.localStorageProvider.getIsLogin()){
-      req = req.clone({ headers: req.headers.set('token', this.localStorageProvider.getToken())});
+	if(this.localStorageProvider.getIsLogin()){
+        req = req.clone({ headers: req.headers.set('token', this.localStorageProvider.getToken())});
     }
 		req = req.clone({ headers: req.headers.set('Authorization','Basic ' + btoa(this.username+':'+this.password)) });
 		return hand.handle(req);

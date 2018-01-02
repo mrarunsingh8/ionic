@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/Observable";
+import { ConfigProvider } from '../config/config';
+
 
 /*
   Generated class for the LoginProvider provider.
@@ -22,10 +24,10 @@ export interface LoginResponceInterface{
 
 @Injectable()
 export class LoginProvider {
-  url: string = 'http://127.0.0.1:3000/authenticate';
+  url: string = null;
 
-  constructor(public http: HttpClient) {
-
+  constructor(public http: HttpClient, private config: ConfigProvider) {
+    this.url = config.getLoginApiUrl();
   }
 
   getAuth(data: LoginInterface): Observable<any>{

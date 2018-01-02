@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConfigProvider } from '../config/config';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -36,8 +37,8 @@ export interface bookDataInterface{
 export class BookProvider {
 	url: string = 'http://127.0.0.1:3000/api/book';
 
-	constructor(public http: HttpClient) {
-		console.log('Hello BookProvider Provider');
+	constructor(public http: HttpClient, private config: ConfigProvider) {
+		this.url = config.getBookApiUrl();
 	}
 
 	getAllBooks(): Observable<any>{

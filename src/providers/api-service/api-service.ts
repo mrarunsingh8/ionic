@@ -1,6 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 
 
 /*
@@ -16,7 +15,7 @@ export class ApiServiceProvider {
 	private password: string = "admin";
 	private token: string = '';
 	private apiHeader = new HttpHeaders();
-	constructor(private storage: Storage) {
+	constructor() {
 		this.setDefaultHeader();
 	}
 

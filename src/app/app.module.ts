@@ -26,6 +26,8 @@ import { LoginProvider } from '../providers/login/login';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
 import {LocalStorageProvider} from "../providers/http-interceptor/local-storage";
 
+import { DirectivesModule } from '../directives/directives.module';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {LocalStorageProvider} from "../providers/http-interceptor/local-storage"
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DirectivesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
