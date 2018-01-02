@@ -7,8 +7,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title>User</ion-title>
-    <ion-buttons end >
-      <button ion-button icon-only (click)="openAddUser()">
+    <ion-buttons end>
+      <button ion-button icon-only>
         <ion-icon name="person-add"></ion-icon>
       </button>
     </ion-buttons>
@@ -17,14 +17,8 @@
 
 <ion-content padding>
 
-<ion-list>
-	<button ion-item *ngFor="let user of userData?.response" (click)="openUserDetail(user.id)">
-	  <ion-icon name="person" item-start></ion-icon>
-	  {{user.name}}
-	  <div class="item-note" item-end>
-	    {{user.note}}
-	  </div>
-	</button>
-</ion-list>
+  <ion-list>
+    
+  </ion-list>
 
 </ion-content>

@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { UserPage } from '../pages/user/user';
+import {UserAddPage} from "../pages/user/user-add";
 import { UserDetailPage } from '../pages/user/user-detail';
 import { BookPage } from '../pages/book/book';
 import { BookDetailPage } from '../pages/book/book-detail';
@@ -29,12 +30,14 @@ import {LocalStorageProvider} from "../providers/http-interceptor/local-storage"
 import { DirectivesModule } from '../directives/directives.module';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
     UserPage,
+    UserAddPage,
     UserDetailPage,
     BookPage,
     BookDetailPage,
@@ -54,6 +57,7 @@ import { DirectivesModule } from '../directives/directives.module';
     HomePage,
     ListPage,
     UserPage,
+    UserAddPage,
     UserDetailPage,
     BookPage,
     BookDetailPage,

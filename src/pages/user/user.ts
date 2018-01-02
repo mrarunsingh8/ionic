@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { UserProvider, userDataInterFace} from '../../providers/user/user';
 
 import {UserDetailPage} from './user-detail';
+import {UserAddPage} from "./user-add";
 
 /**
  * Generated class for the UserPage page.
@@ -20,12 +21,12 @@ import {UserDetailPage} from './user-detail';
 export class UserPage {
   userData: userDataInterFace;
   constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider) {
-  	
+
   }
 
   ionViewDidLoad() {
   	this.userProvider.getUsers().subscribe(res => {
-        this.userData = res;        
+        this.userData = res;
   	});
   }
 
@@ -33,5 +34,9 @@ export class UserPage {
     this.navCtrl.push(UserDetailPage, {
       userId: userId
     });
+  }
+
+  openAddUser() {
+    this.navCtrl.push(UserAddPage);
   }
 }
