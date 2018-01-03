@@ -6,19 +6,86 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>User</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="person-add"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>{{(userId > 0)?'Update':'Add New'}} User</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="userForm"  (submit)="formSubmit()">
+    <ion-list>
 
-  <ion-list>
-    
-  </ion-list>
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.name.invalid && (userForm.controls.name.dirty || userForm.controls.name.touched) then nameLabelValidate else nameLabelDefault"></ion-label>
+        <ng-template #nameLabelValidate>
+          <ion-label floating error-red>Name is Required</ion-label>
+        </ng-template>
+        <ng-template #nameLabelDefault>
+          <ion-label floating>Name</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.name" [formControl]="userForm.controls.name"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.email.invalid && (userForm.controls.email.dirty || userForm.controls.email.touched) then emailLabelValidate else emailLabelDefault"></ion-label>
+        <ng-template #emailLabelValidate>
+          <ion-label floating error-red>Email is Required</ion-label>
+        </ng-template>
+        <ng-template #emailLabelDefault>
+          <ion-label floating>Email</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.email" [formControl]="userForm.controls.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched) then usernameLabelValidate else usernameLabelDefault"></ion-label>
+        <ng-template #usernameLabelValidate>
+          <ion-label floating error-red>Username is Required</ion-label>
+        </ng-template>
+        <ng-template #usernameLabelDefault>
+          <ion-label floating>Username</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.username" [formControl]="userForm.controls.username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.password.invalid && (userForm.controls.password.dirty || userForm.controls.password.touched) then passwordLabelValidate else passwordLabelDefault"></ion-label>
+        <ng-template #passwordLabelValidate>
+          <ion-label floating error-red>Password is Required</ion-label>
+        </ng-template>
+        <ng-template #passwordLabelDefault>
+          <ion-label floating>Password</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.password" [formControl]="userForm.controls.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.cpassword.invalid && (userForm.controls.cpassword.dirty || userForm.controls.cpassword.touched) then cpasswordLabelValidate else cpasswordLabelDefault"></ion-label>
+        <ng-template #cpasswordLabelValidate>
+          <ion-label floating error-red>Confirm Password is Required</ion-label>
+        </ng-template>
+        <ng-template #cpasswordLabelDefault>
+          <ion-label floating>Confirm Password</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.cpassword" [formControl]="userForm.controls.cpassword"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="userForm.controls.contact.invalid && (userForm.controls.contact.dirty || userForm.controls.contact.touched) then contactLabelValidate else contactLabelDefault"></ion-label>
+        <ng-template #contactLabelValidate>
+          <ion-label floating error-red>Contact is Required</ion-label>
+        </ng-template>
+        <ng-template #contactLabelDefault>
+          <ion-label floating>Contact</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="userData.contact" [formControl]="userForm.controls.contact"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <button ion-button block large type="submit">
+            {{(userId > 0)?'Update':'Create'}}
+          </button>
+        </ion-item>
+
+    </ion-list>
+  </form>
 </ion-content>

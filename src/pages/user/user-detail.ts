@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { UserProvider, userInterFace } from '../../providers/user/user';
-
+import { UserAddPage } from '../user/user-add';
 
 /**
  * Generated class for the UserDetailPage page.
@@ -26,6 +26,10 @@ export class UserDetailPage {
       this.isLoadedData = true;
       this.userDetail = res;
   	});
+  }
+
+  editUserPage(userId: number){
+    this.navCtrl.push(UserAddPage, {userId: userId});
   }
 
 }

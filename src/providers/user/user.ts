@@ -9,12 +9,13 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-interface userItems{
+export interface userItems{
   id?: number;
   name?: string;
   email?: string;
   username?: string;
   password?: string;
+  cpassword?: string;
   token?: string;
   tokenExpireIn?: string;
   contact?: string;
@@ -42,13 +43,31 @@ export class UserProvider{
 
   getUsers(): Observable<any>{
 	  var header : HttpHeaders;
-    return this.http.get(this.url, {headers: header}).map(res => {
+    return this.http.get <userDataInterFace>(this.url, {headers: header}).map(res => {
       return res;
     });
   }
 
   getUser(userId): Observable<any>{
-    return this.http.get(this.url+"/"+userId).map(res => {
+    return this.http.get <userInterFace>(this.url+"/"+userId).map(res => {
+      return res;
+    });
+  }
+
+  createUser(data): Observable<any>{
+    return this.http.post <userItems>(this.url, data).map(res => {
+      return res;
+    });
+  }
+
+  editUser(data, userId): Observable<any>{
+    return this.http.put <userItems>(this.url+"/"+userId, data).map(res => {
+      return res;
+    });
+  }
+
+  deleteUser(userId: number): Observable<any>{
+    return this.http.delete <userItems> (this.url+"/"+userId).map(res=>{
       return res;
     });
   }

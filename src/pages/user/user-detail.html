@@ -6,9 +6,12 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title item-center>
-      User Detail
-    </ion-title>
+    <ion-title item-center>User Detail</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editUserPage(userDetail.response.id)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

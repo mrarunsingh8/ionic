@@ -17,14 +17,13 @@
 
 <ion-content padding>
 
-<ion-list>
-	<button ion-item *ngFor="let user of userData?.response" (click)="openUserDetail(user.id)">
-	  <ion-icon name="person" item-start></ion-icon>
-	  {{user.name}}
-	  <div class="item-note" item-end>
-	    {{user.note}}
-	  </div>
-	</button>
-</ion-list>
 
+    <ion-grid >
+      <ion-row *ngFor="let user of userData?.response">
+        <ion-col  col-2 item-start><ion-icon name="person" item-start></ion-icon></ion-col>
+        <ion-col  col-8 (click)="openUserDetail(user.id)">{{user.name}}</ion-col>
+        <ion-col col-1 item-end (click)="editUserPage(user.id)"><ion-icon name="create"></ion-icon></ion-col>
+        <ion-col col-1 item-end (click)="deleteUser(user.id)"><ion-icon name="trash"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>
