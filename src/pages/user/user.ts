@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, AlertController, NavController, NavParams} from 'ionic-angular';
-import { UserProvider, userItems, userDataInterFace} from '../../providers/user/user';
+import { UserProvider, userInterFace, userDataInterFace} from '../../providers/user/user';
 
 import {UserDetailPage} from './user-detail';
 import {UserAddPage} from "./user-add";
@@ -19,7 +19,7 @@ import {UserAddPage} from "./user-add";
   templateUrl: 'user.html',
 })
 export class UserPage {
-  deleteUserItem: userItems;
+  deleteUserItem: userInterFace;
 
   userData: userDataInterFace;
   constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider, private alertCtrl: AlertController) {
@@ -67,10 +67,9 @@ export class UserPage {
           handler: () => {
             this.userProvider.deleteUser(userId).subscribe((res)=>{
               this.deleteUserItem = res;
-              console.log(this.deleteUserItem);
               if(this.deleteUserItem.error == null && this.deleteUserItem.status == 200){
                 let navCtrl = this.navCtrl;
-                navCtrl.pop().then(function(){
+                navCtrl.popToRoot().then(function(){
                   navCtrl.push(UserPage);
                 });
               }

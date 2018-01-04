@@ -11,19 +11,24 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Books</ion-title>
+    <ion-buttons end >
+      <button ion-button icon-only (click)="openAddBook()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-list *ngIf="isLoadedData">
-		<button ion-item *ngFor="let bookItem of books.response" (click)="openBookDetail(bookItem.id)">
-		  <ion-icon name="person" item-start></ion-icon>
-		  {{bookItem.bookname}}
-		  <div class="item-note" item-end>
-		    {{bookItem.authorname}}
-		  </div>
-		</button>
-	</ion-list>
+  <ion-grid >
+      <ion-row *ngFor="let bookItem of books?.response">
+        <ion-col  col-2 item-start><ion-icon name="book" item-start></ion-icon></ion-col>
+        <ion-col  col-8 (click)="openBookDetail(bookItem.id)">{{bookItem.bookname}}/{{bookItem.authorname}}
+        </ion-col>
+        <ion-col col-1 item-end (click)="editBookPage(bookItem.id)"><ion-icon name="create"></ion-icon></ion-col>
+        <ion-col col-1 item-end (click)="deleteBook(bookItem.id)"><ion-icon name="trash"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

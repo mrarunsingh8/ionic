@@ -1,0 +1,80 @@
+<!--
+  Generated template for the UserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{(bookId > 0)?'Update':'Add New'}} Book</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <form [formGroup]="bookForm"  (submit)="formSubmit()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating *ngIf="bookForm.controls.bookname.invalid && (bookForm.controls.bookname.dirty || bookForm.controls.bookname.touched) then booknameLabelValidate else booknameLabelDefault"></ion-label>
+        <ng-template #booknameLabelValidate>
+          <ion-label floating error-red>Book Name is Required</ion-label>
+        </ng-template>
+        <ng-template #booknameLabelDefault>
+          <ion-label floating>Book Name</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="bookData.bookname" [formControl]="bookForm.controls.bookname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="bookForm.controls.authorname.invalid && (bookForm.controls.authorname.dirty || bookForm.controls.authorname.touched) then authornameLabelValidate else authornameLabelDefault"></ion-label>
+        <ng-template #authornameLabelValidate>
+          <ion-label floating error-red>Author Name is Required</ion-label>
+        </ng-template>
+        <ng-template #authornameLabelDefault>
+          <ion-label floating>Author Name</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="bookData.authorname" [formControl]="bookForm.controls.authorname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="bookForm.controls.version.invalid && (bookForm.controls.version.dirty || bookForm.controls.version.touched) then versionLabelValidate else versionLabelDefault"></ion-label>
+        <ng-template #versionLabelValidate>
+          <ion-label floating error-red>Version is Required</ion-label>
+        </ng-template>
+        <ng-template #versionLabelDefault>
+          <ion-label floating>Version</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="bookData.version" [formControl]="bookForm.controls.version"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="bookForm.controls.description.invalid && (bookForm.controls.description.dirty || bookForm.controls.description.touched) then descriptionLabelValidate else descriptionLabelDefault"></ion-label>
+        <ng-template #descriptionLabelValidate>
+          <ion-label floating error-red>Description is Required</ion-label>
+        </ng-template>
+        <ng-template #descriptionLabelDefault>
+          <ion-label floating>Description</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="bookData.description" [formControl]="bookForm.controls.description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating *ngIf="bookForm.controls.price.invalid && (bookForm.controls.price.dirty || bookForm.controls.price.touched) then priceLabelValidate else priceLabelDefault"></ion-label>
+        <ng-template #priceLabelValidate>
+          <ion-label floating error-red>Price is Required</ion-label>
+        </ng-template>
+        <ng-template #priceLabelDefault>
+          <ion-label floating>Price</ion-label>
+        </ng-template>
+        <ion-input type="text" [(ngModel)]="bookData.price" [formControl]="bookForm.controls.price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <button ion-button block large type="submit">
+            {{(bookId > 0)?'Update':'Create'}}
+          </button>
+        </ion-item>
+
+    </ion-list>
+  </form> 
+</ion-content>

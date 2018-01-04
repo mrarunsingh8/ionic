@@ -123,7 +123,10 @@ export class UserAddPage {
 	}
 
 	showListPage(){
-		this.navCtrl.popTo(UserPage);
+		let self = this;
+		this.navCtrl.popToRoot().then(function(){
+          self.navCtrl.push(UserPage);
+        });
 	}
 
 	showAlert(alertData: AlertInterface) {

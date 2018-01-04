@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-interface BookItem{
+export interface BookItem{
 	id?: number;
 	bookname?: string;
 	authorname?: string;
@@ -35,7 +35,7 @@ export interface bookDataInterface{
 
 @Injectable()
 export class BookProvider {
-	url: string = 'http://127.0.0.1:3000/api/book';
+	url: string = '';
 
 	constructor(public http: HttpClient, private config: ConfigProvider) {
 		this.url = config.getBookApiUrl();
@@ -50,6 +50,24 @@ export class BookProvider {
 	getBook(bookId): Observable<any>{
 		return this.http.get<bookInterface>(this.url+'/'+bookId).map(res => {
 			return res;
+		});
+	}
+
+	createBook(data): Observable<any>{
+		return this.http.post <bookInterface>(this.url, data).map(res => {
+		  return res;
+		});
+	}
+
+	editBook(data, bookId): Observable<any>{
+		return this.http.put <bookInterface>(this.url+"/"+bookId, data).map(res => {
+		  return res;
+		});
+	}
+
+	deleteBook(bookId: number): Observable<any>{
+		return this.http.delete <bookInterface> (this.url+"/"+bookId).map(res=>{
+		  return res;
 		});
 	}
 }
